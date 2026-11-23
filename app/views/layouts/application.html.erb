@@ -21,9 +21,23 @@
     <%# Includes all stylesheet files in app/assets/stylesheets %>
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
   </head>
 
   <body>
-    <%= yield %>
+    <header class="container">
+      <nav>
+        <ul>
+          <li><strong>JobBoard</strong></li>
+          <li><%= link_to "All jobs", root_path %></li>
+        </ul>
+        <ul>
+          <li><%= link_to "Post a job", new_job_path %></li>
+        </ul>
+      </nav>
+    </header>
+    <main class="container">
+      <%= yield %>
+    </main>
   </body>
 </html>

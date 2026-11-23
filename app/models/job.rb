@@ -1,11 +1,23 @@
 class Job < ApplicationRecord
   validates :title, :company, :salary, :region, presence: true
-  # validates :apply_url, presence: true, unless: :apply_email?
-  # validates :apply_email, presence: true, unless: :apply_url?
+  validates :apply_url,
+            format: {
+              with: URI::DEFAULT_PARSER.make_regexp(%w[http https]),
+              message: "must be a valid HTTP or HTTPS URL"
+            },
+            allow_blank: true
+
   validate :has_apply_method
+
   def has_apply_method
-    unless apply_email? || apply_url?
-      errors.add(:base, "Must provide either apply_email or apply_url")
+    unless apply_url? || apply_email?
+      errors.add(:base, "Please provide an apply URL or email")
     end
+  end
+  # to_param :title
+  # to_param :title_and_company
+
+  def to_param
+    [id, title, 'at', company].join("-").parameterize
   end
 end

@@ -1,1 +1,10 @@
+<%= link_to "Edit job post", edit_job_path(@job)%>
+
 <h1><%= @job.title %> at <%= @job.company %></h1>
+<p><%= number_to_currency @job.salary %> - <%= @job.region %></p>
+
+<h5>Apply for this job</h5>
+<% if (apply_url = safe_apply_url(@job.apply_url)) %>
+  <%= link_to "Website", apply_url, role: :button %>
+<% end %>
+<%= mail_to @job.apply_email, "email", role: :button if @job.apply_email? %>

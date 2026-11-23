@@ -1,8 +1,5 @@
-<h1>Jobs</h1>
 <%= render @jobs %>
-<!-- <ul>
-  <% @jobs.each do |job| %>
-    <li><%= job.title %></li>
-  <% end %>
-</ul> -->
 
+<% if @jobs.none? %>
+  <article>Check back later for new jobs.</article>
+<% end %>

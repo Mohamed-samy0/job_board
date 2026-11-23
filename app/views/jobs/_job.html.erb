@@ -4,5 +4,5 @@
         <%= job.title %> at <%= job.company %>
     <% end %>
   </h3>
-  <p><%= job.salary %> - <%= job.region %></p>
+  <p><%= number_to_currency job.salary %> - <%= job.region %></p>
 </div>

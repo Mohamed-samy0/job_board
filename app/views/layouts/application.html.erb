@@ -37,6 +37,8 @@
       </nav>
     </header>
     <main class="container">
+      <%= tag.article alert, style: "color:red;" if alert%>
+      <%= tag.article notice, style: "color:green;" if notice%>
       <%= yield %>
     </main>
   </body>

@@ -1,6 +1,9 @@
 <h1>Post Job</h1>
 
 <%= form_with model: @job do |form| %>
+
+  <%= render "errors", form: form%>%>
+
   <div>
     <%= form.label :title%>
     <%= form.text_field :title, placeholder: "Developer", required: true %>
